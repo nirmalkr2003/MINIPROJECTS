@@ -10,40 +10,50 @@ The project provides:
 ---
 
 ## Project Structure
-
-
-flask_project/
+```
+Flask project:
+│   Dockerfile
+│   Readme.md
+│   requirements.txt
+│   
+├───data
+│       car data.csv
 │
-├── data/
-│   └── car_data.csv
-│
-├── training/
-│   └── model_training.ipynb
-│
-├── models/
-│   ├── model.pkl
-│   ├── scaler.pkl
-│   ├── fuel_encoder.pkl
-│   └── transmission_encoder.pkl
-│
-├── app/
-│   ├── flask_app/
-│   │   ├── app.py
-│   │   ├── templates/
-│   │   │   ├── index.html
-│   │   │   └── result.html
-│   │   └── static/
-│   │       ├── css/style.css
-│   │       └── images/bg.jpg
+├───flask_app
+│   │   app.py
 │   │
-│   └── streamlit_app/
-│       └── main.py
+│   ├───static
+│   │   ├───css
+│   │   │       style.css
+│   │   │
+│   │   └───images
+│   │           bg.jpg
+│   │           image.jpeg
+│   │
+│   └───templates
+│           index.html
+│           result.html
 │
-├── ui_screenshots/
+├───model
+│       Fuel_Type.pkl
+│       model.pkl
+│       scaling.pkl
+│       Transmission.pkl
 │
-├── requirements.txt
-├── Dockerfile
-└── README.md
+├───streamlit_app
+│       main.py
+│
+├───training
+│       model.py
+│
+├───UI_Screenshots
+│       home_page1.png
+│       home_page2.png
+│       result_page.png
+│
+└───__pycache__
+        streamlit.cpython-313.pyc 
+```
 
 
 ## Run Flask Application
