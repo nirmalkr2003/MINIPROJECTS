@@ -1,14 +1,24 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 # Load trained files
-model = pickle.load(open('model.pkl', 'rb'))
-Fuel_Type_en = pickle.load(open('Fuel_Type.pkl', 'rb'))
-Transmission_en = pickle.load(open('Transmission.pkl', 'rb'))
-scaler = pickle.load(open('scaling.pkl', 'rb'))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, '..', 'model', 'model.pkl')
+fuel_path  = os.path.join(BASE_DIR, '..', 'model', 'Fuel_Type.pkl')
+trans_path = os.path.join(BASE_DIR, '..', 'model', 'Transmission.pkl')
+scale_path = os.path.join(BASE_DIR, '..', 'model', 'scaling.pkl')
+
+
+model = pickle.load(open(model_path, 'rb'))
+Fuel_Type_en = pickle.load(open(fuel_path, 'rb'))
+Transmission_en = pickle.load(open(trans_path, 'rb'))
+scaler = pickle.load(open(scale_path, 'rb'))
 
 print("Model and encoders loaded")
 

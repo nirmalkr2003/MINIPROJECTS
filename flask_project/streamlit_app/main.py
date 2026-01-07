@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os
 
 # ---------- PAGE STATE ----------
 if "page" not in st.session_state:
@@ -65,10 +66,26 @@ div[data-testid="stAlert"] {
 """, unsafe_allow_html=True)
 
 # ---------- LOAD MODEL ----------
-model = pickle.load(open('model.pkl', 'rb'))
-Fuel_Type_en = pickle.load(open('Fuel_Type.pkl', 'rb'))
-Transmission_en = pickle.load(open('Transmission.pkl', 'rb'))
-scaler = pickle.load(open('scaling.pkl', 'rb'))
+
+import os
+import pickle
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, '..', 'model', 'model.pkl')
+fuel_path  = os.path.join(BASE_DIR, '..', 'model', 'Fuel_Type.pkl')
+trans_path = os.path.join(BASE_DIR, '..', 'model', 'Transmission.pkl')
+scale_path = os.path.join(BASE_DIR, '..', 'model', 'scaling.pkl')
+
+model = pickle.load(open(model_path, 'rb'))
+Fuel_Type_en = pickle.load(open(fuel_path, 'rb'))
+Transmission_en = pickle.load(open(trans_path, 'rb'))
+scaler = pickle.load(open(scale_path, 'rb'))
+print("Model and encoders loaded")
+# model = pickle.load(open('model.pkl', 'rb'))
+# Fuel_Type_en = pickle.load(open('Fuel_Type.pkl', 'rb'))
+# Transmission_en = pickle.load(open('Transmission.pkl', 'rb'))
+# scaler = pickle.load(open('scaling.pkl', 'rb'))
 
 st.set_page_config(page_title="Car Price Prediction")
 
