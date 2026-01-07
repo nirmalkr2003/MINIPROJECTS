@@ -12,44 +12,39 @@ The project provides:
 ## Project Structure
 
 
-
 flask_project/
-├── UI_Screenshots/
+│
 ├── data/
-│   └── car data.csv
+│   └── car_data.csv
+│
 ├── training/
 │   └── model_training.ipynb
-├── flask_app/
-│   ├── app.py
-│   ├── templates/
-│   │   ├── index.html
-│   │   └── result.html
-│   └── static/
-│       ├── css/
-│       │   └── style.css
-│       └── images/
-│           └── bg.jpg
-├── model/
+│
+├── models/
 │   ├── model.pkl
-│   ├── scaling.pkl
-│   ├── Fuel_Type.pkl
-│   └── Transmission.pkl
-├── streamlit_app/
-│   └── main.py
+│   ├── scaler.pkl
+│   ├── fuel_encoder.pkl
+│   └── transmission_encoder.pkl
+│
+├── app/
+│   ├── flask_app/
+│   │   ├── app.py
+│   │   ├── templates/
+│   │   │   ├── index.html
+│   │   │   └── result.html
+│   │   └── static/
+│   │       ├── css/style.css
+│   │       └── images/bg.jpg
+│   │
+│   └── streamlit_app/
+│       └── main.py
+│
+├── ui_screenshots/
+│
 ├── requirements.txt
 ├── Dockerfile
-└── Readme.md
+└── README.md
 
-
----
-
-## Requirements
-
-Install dependencies using:
-
-pip install -r requirements.txt
-
----
 
 ## Run Flask Application
 
