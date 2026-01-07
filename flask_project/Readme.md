@@ -11,21 +11,16 @@ The project provides:
 
 ## Project Structure
 
+
+
 flask_project/
-│
+├── UI_Screenshots/
 ├── data/
 │   └── car data.csv
-│
 ├── training/
 │   └── model_training.ipynb
-│
 ├── flask_app/
 │   ├── app.py
-│   ├── model/
-│   │   ├── model.pkl
-│   │   ├── scaling.pkl
-│   │   ├── Fuel_Type.pkl
-│   │   └── Transmission.pkl
 │   ├── templates/
 │   │   ├── index.html
 │   │   └── result.html
@@ -34,12 +29,17 @@ flask_project/
 │       │   └── style.css
 │       └── images/
 │           └── bg.jpg
-│
+├── model/
+│   ├── model.pkl
+│   ├── scaling.pkl
+│   ├── Fuel_Type.pkl
+│   └── Transmission.pkl
 ├── streamlit_app/
 │   └── main.py
-│
 ├── requirements.txt
-└── README.md
+├── Dockerfile
+└── Readme.md
+
 
 ---
 
