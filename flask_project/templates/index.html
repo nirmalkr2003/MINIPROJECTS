@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Car Price Prediction</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<!-- Overlay (NOT a box) -->
+<div class="overlay"></div>
+
+<div class="content">
+
+    <h1 class="title">Car Price Prediction</h1>
+    <p class="subtitle">Estimate your car’s resale value instantly</p>
+
+    <form class="floating-form" action="/predict" method="POST" target="_blank">
+
+        <input type="text" name="Year" placeholder="Year of Manufacture">
+
+        <select name="Fuel_Type">
+            <option disabled selected>Fuel Type</option>
+            <option value="0">CNG</option>
+            <option value="1">Diesel</option>
+            <option value="2">Petrol</option>
+        </select>
+
+        <input type="text" name="Present_Price" placeholder="Present Price (in lakhs)">
+
+        <select name="Transmission">
+            <option disabled selected>Transmission</option>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+        </select>
+
+        <input type="text" name="Kms_Driven" placeholder="Kilometers Driven">
+
+        <input type="text" name="Owner" placeholder="Number of Previous Owners">
+
+        <select name="Seller_Type_Individual">
+            <option disabled selected>Seller Type</option>
+            <option value="0">Dealer</option>
+            <option value="1">Individual</option>
+        </select>
+
+        <button type="submit">Predict Car Price</button>
+
+        <div class="result">{{ prediction_text }}</div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
+
+                  
+                  
+                
+                
+                
+            
+                
+                
+                
+                
+                
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+

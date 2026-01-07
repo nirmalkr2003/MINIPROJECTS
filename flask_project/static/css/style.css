@@ -1,0 +1,224 @@
+/* ======================
+   GLOBAL / BASE
+====================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #ffffff;
+    background: url("/static/images/bg.jpg") center/cover no-repeat;
+    overflow: hidden;
+}
+
+/* ======================
+   BACKGROUND OVERLAY
+====================== */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.45) 35%,
+        rgba(0, 0, 0, 0.20) 65%,
+        rgba(0, 0, 0, 0.00) 100%
+    );
+    z-index: 1;
+}
+
+/* ======================
+   CONTENT LAYER
+====================== */
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ======================
+   HEADINGS
+====================== */
+.title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    margin-top: 60px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 50px;
+}
+
+/* ======================
+   FORM (NO BOX)
+====================== */
+.floating-form {
+    width: 65%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* ======================
+   INPUTS & SELECTS
+====================== */
+input,
+select {
+    width: 100%;
+    padding: 16px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    outline: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Remove default select arrow look */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* ======================
+   INPUT FOCUS
+====================== */
+input:focus,
+select:focus {
+    border-color: #1e90ff;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* ======================
+   PREDICT BUTTON (BLUE)
+====================== */
+button {
+    grid-column: span 2;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #1e90ff,
+        #2563eb
+    );
+
+    color: #ffffff;
+
+    transition:
+        background 0.4s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+button:hover {
+    background: linear-gradient(
+        135deg,
+        #3fa9f5,
+        #1e90ff
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 32px rgba(30, 144, 255, 0.45);
+}
+
+button:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 7px 18px rgba(30, 144, 255, 0.35);
+}
+
+/* ======================
+   RESULT TEXT
+====================== */
+.result {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+/* ======================
+   RESPONSIVE (MOBILE)
+====================== */
+@media (max-width: 768px) {
+    .floating-form {
+        width: 85%;
+        grid-template-columns: 1fr;
+    }
+
+    button,
+    .result {
+        grid-column: span 1;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+}
+/* ======================
+   CUSTOM SELECT (PREMIUM)
+====================== */
+
+/* Wrapper illusion */
+select {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #ffffff 50%),
+        linear-gradient(135deg, #ffffff 50%, transparent 50%),
+        linear-gradient(to right, rgba(255,255,255,0.35), rgba(255,255,255,0.35));
+    background-position:
+        calc(100% - 20px) calc(50% - 5px),
+        calc(100% - 15px) calc(50% - 5px),
+        calc(100% - 2.5em) 50%;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 60%;
+    background-repeat: no-repeat;
+}
+
+/* Dropdown options */
+select option {
+    background-color: #0e1117;   /* dark premium */
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Hover highlight inside dropdown */
+select option:hover {
+    background-color: #1e90ff;
+}
+
+/* Focus glow */
+select:focus {
+    box-shadow: 0 0 0 2px rgba(30,144,255,0.4);
+}
+
+/* Smooth focus transition */
+select {
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
