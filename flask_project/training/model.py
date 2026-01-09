@@ -1,76 +1,141 @@
 # import necessary libraries
-import pandas as pd
-import numpy as np
+# =====================================================
+# IMPORTS
+# =====================================================
+import os
+import pickle
+import warnings
 from datetime import datetime
 
+import numpy as np
+import pandas as pd
+
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-
 from sklearn.model_selection import train_test_split
-
-#from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
-import pickle
 
-import warnings
 warnings.filterwarnings('ignore')
 
 
-df = pd.read_csv('car data.csv')
-#print(df.head())
+# =====================================================
+# PATH SETUP (CRITICAL)
+# =====================================================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# handling outlier_cols
+DATA_DIR = os.path.join(BASE_DIR, '..', 'data')
+MODEL_DIR = os.path.join(BASE_DIR, '..', 'model')
 
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+CSV_PATH = os.path.join(DATA_DIR, 'car data.csv')
+
+
+# =====================================================
+# LOAD DATA
+# =====================================================
+df = pd.read_csv(CSV_PATH)
+
+
+# =====================================================
+# OUTLIER HANDLING (IQR METHOD)
+# =====================================================
 outlier_cols = ['Year', 'Selling_Price', 'Present_Price', 'Kms_Driven']
 
 def remove_outliers_iqr(data, column):
-  q1,q2,q3 = np.percentile(data[column],[25,50,75])
-  #print("q1,q2,q3 is :",q1,q2,q3)
-  IQR = q3-q1
-  #print("IQR is :" ,IQR)
-  lower_limit = q1-(1.5*IQR)
-  upper_limit = q3+(1.5*IQR)
-  data[column]=np.where(data[column]>upper_limit,upper_limit,data[column]) # Capping the upper limit
-  data[column]=np.where(data[column]<lower_limit,lower_limit,data[column]) # Flooring the lower limit
+    q1, q2, q3 = np.percentile(data[column], [25, 50, 75])
+    iqr = q3 - q1
+    lower_limit = q1 - (1.5 * iqr)
+    upper_limit = q3 + (1.5 * iqr)
 
-for column in outlier_cols:
-  remove_outliers_iqr(df,column)
+    data[column] = np.where(
+        data[column] > upper_limit, upper_limit,
+        np.where(data[column] < lower_limit, lower_limit, data[column])
+    )
+
+for col in outlier_cols:
+    remove_outliers_iqr(df, col)
 
 
-# Feature Engineering
+# =====================================================
+# FEATURE ENGINEERING
+# =====================================================
 df.drop(columns=['Car_Name'], inplace=True)
+
 current_year = datetime.now().year
 
 le_fuel = LabelEncoder()
 le_trans = LabelEncoder()
+
 df['Fuel_Type'] = le_fuel.fit_transform(df['Fuel_Type'])
 df['Transmission'] = le_trans.fit_transform(df['Transmission'])
-df = pd.get_dummies(df, columns=['Seller_Type'], drop_first=True)
-with open('Fuel_Type.pkl', 'wb') as f:
-    pickle.dump(le_fuel, f)  #save trained fuel encoder
 
-with open('Transmission.pkl', 'wb') as f:
+df = pd.get_dummies(df, columns=['Seller_Type'], drop_first=True)
+
+
+# =====================================================
+# SAVE ENCODERS
+# =====================================================
+with open(os.path.join(MODEL_DIR, 'Fuel_Type.pkl'), 'wb') as f:
+    pickle.dump(le_fuel, f)
+
+with open(os.path.join(MODEL_DIR, 'Transmission.pkl'), 'wb') as f:
     pickle.dump(le_trans, f)
 
-#splitting data into dependent and independent columns
-x=df.drop('Selling_Price',axis=1)
-y=df['Selling_Price']
 
-#Scaling
-normalisation = StandardScaler()
-x_scaled = normalisation.fit_transform(x)
-# Coverting to Dataframe
-x=pd.DataFrame(x_scaled)
-with open('scaling.pkl', 'wb') as f:
-    pickle.dump(normalisation, f)
-
-x_train,x_test,y_train,y_test = train_test_split(x,y,random_state =42,test_size=0.33)
-
-# Train a Linear Regression model
-#model = LinearRegression()
-model = RandomForestRegressor(n_estimators=300,max_depth=15,random_state=42,n_jobs=-1)
-model.fit(x_train, y_train)
-
-# save the model 
-pickle.dump(model,open('model.pkl','wb'))
+# =====================================================
+# SPLIT FEATURES & TARGET
+# =====================================================
+X = df.drop('Selling_Price', axis=1)
+y = df['Selling_Price']
 
 
+# =====================================================
+# SCALING
+# =====================================================
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+X = pd.DataFrame(X_scaled, columns=X.columns)
+
+with open(os.path.join(MODEL_DIR, 'scaling.pkl'), 'wb') as f:
+    pickle.dump(scaler, f)
+
+
+# =====================================================
+# TRAIN–TEST SPLIT
+# =====================================================
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42
+)
+
+
+# =====================================================
+# MODEL TRAINING
+# =====================================================
+model = RandomForestRegressor(
+    n_estimators=300,
+    max_depth=15,
+    random_state=42,
+    n_jobs=-1
+)
+
+model.fit(X_train, y_train)
+
+
+# =====================================================
+# SAVE MODEL
+# =====================================================
+with open(os.path.join(MODEL_DIR, 'model.pkl'), 'wb') as f:
+    pickle.dump(model, f)
+
+print("Training completed successfully")
+print("Model files saved in /model directory")
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+y_pred = model.predict(X_test)
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2  = r2_score(y_test, y_pred)
+
+print(r2)
+print("RUNNING MODEL.PY")
+# =====================================================
