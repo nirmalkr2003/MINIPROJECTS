@@ -21,7 +21,7 @@ MODEL_DIR = os.path.join(BASE_DIR, '..', 'model')
 with open(os.path.join(MODEL_DIR, 'gbr_model.pkl'), 'rb') as f:
     model = pickle.load(f)
 
-with open(os.path.join(MODEL_DIR, 'scaling.pkl'), 'rb') as f:
+with open(os.path.join(MODEL_DIR, 'b_scaling.pkl'), 'rb') as f:
     scaler = pickle.load(f)
 
 # =====================================================
