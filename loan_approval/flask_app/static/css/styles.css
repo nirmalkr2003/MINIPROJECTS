@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* MAIN CONTAINER */
+.container {
+    background: #121212;            /* changed */
+    width: 850px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+/* HEADINGS */
+h1 {
+    text-align: center;
+    color: #4da3ff;                 /* changed */
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #b0b0b0;                 /* changed */
+    margin-bottom: 25px;
+}
+
+/* FORM GRID */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 25px;
+}
+
+/* FORM GROUP */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABELS */
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #d0d0d0;                 /* changed */
+}
+
+/* INPUTS & SELECTS */
+input,
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;         /* changed */
+    background: #1e1e1e;            /* changed */
+    color: #f1f1f1;                 /* changed */
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4da3ff;          /* changed */
+    box-shadow: 0 0 0 1px rgba(77, 163, 255, 0.5);
+}
+
+/* BUTTON */
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #4da3ff, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(77, 163, 255, 0.4);
+}
+
+/* RESULT BOX */
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4da3ff;                 /* changed */
+    background: #1e1e1e;            /* changed */
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .container {
+        width: 95%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
