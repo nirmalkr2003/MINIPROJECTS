@@ -13,13 +13,13 @@ This repository contains multiple mini projects related to Machine Learning and 
 ### 2 Boston House Price Prediction
 - Regression problem using classical dataset
 - Baseline ML modeling
-- Folder: `boston_houseprice_pred`
+- Folder: `02-boston_houseprice`
 
 
 ### 3 Loan Approval Prediction
 - Machine Learning classification project
 - Includes training and Flask-based deployment
-- Folder: `03-loan-approval`
+- Folder: `03-loan-approval-prediction`
 
 
 ### 4 Wine Quality Classification
