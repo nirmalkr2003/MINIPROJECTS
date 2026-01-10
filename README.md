@@ -4,22 +4,27 @@ This repository contains multiple mini projects related to Machine Learning and 
 
 ## Projects
 
-### 1️ Loan Approval Prediction
-- Machine Learning classification project
-- Includes training and Flask-based deployment
-- Folder: `loan_approval`
-
-### 2️ Car Price Prediction
+### 1 Car Price Prediction
 - Regression model with feature engineering
 - Hyperparameter tuning applied
-- Folder: `flask_project`
+- Folder: `01-car-price-prediction`
 
-### 3️ Wine Quality Classification
-- Classification using ML algorithms
-- Focus on evaluation metrics
-- Folder: `wine_quality`
 
-### 4️ Boston House Price Prediction
+### 2 Boston House Price Prediction
 - Regression problem using classical dataset
 - Baseline ML modeling
 - Folder: `boston_houseprice_pred`
+
+
+### 3 Loan Approval Prediction
+- Machine Learning classification project
+- Includes training and Flask-based deployment
+- Folder: `03-loan-approval`
+
+
+### 4 Wine Quality Classification
+- Classification using ML algorithms
+- Focus on evaluation metrics
+- Folder: `04-wine-quality-classification`
+
+
