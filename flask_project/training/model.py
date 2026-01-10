@@ -116,7 +116,7 @@ model = RandomForestRegressor(
     n_estimators=300,
     max_depth=15,
     random_state=42,
-    n_jobs=-1
+    min_samples_split=5
 )
 
 model.fit(X_train, y_train)
