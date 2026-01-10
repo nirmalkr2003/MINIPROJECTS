@@ -22,14 +22,18 @@ df = pd.read_csv(CSV_PATH)
 X = df.drop("type", axis=1)
 y = df["type"]
 
+# target_encoder = LabelEncoder()
+# y_train = target_encoder.fit_transform(y_train)
+# y_test = target_encoder.transform(y_test)
+
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
+
 target_encoder = LabelEncoder()
 y_train = target_encoder.fit_transform(y_train)
 y_test = target_encoder.transform(y_test)
-
 
 
 rf_model = RandomForestClassifier(
