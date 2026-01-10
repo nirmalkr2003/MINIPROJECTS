@@ -126,7 +126,7 @@ with open(os.path.join(MODEL_DIR, "preprocessor.pkl"), "wb") as f:
 # MODEL TRAINING
 # =====================================================
 rf_model = RandomForestClassifier(
-    n_estimators=300,
+    n_estimators=200,
     class_weight="balanced",
     random_state=42
 )
