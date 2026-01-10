@@ -1,4 +1,4 @@
-# 🍷 Wine Type Prediction Dashboard
+# Wine Type Prediction Dashboard
 
 A machine learning–based **Streamlit web application** that predicts whether a wine is **Red** or **White** using its chemical properties.  
 The project demonstrates a complete **end-to-end ML workflow** with a **professionally styled interactive dashboard**.
