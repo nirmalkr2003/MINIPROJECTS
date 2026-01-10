@@ -136,6 +136,6 @@ print("Model files saved in /model directory")
 # mse = mean_squared_error(y_test, y_pred)
 # r2  = r2_score(y_test, y_pred)
 
-print(r2)
+# print(r2)
 print("RUNNING MODEL.PY")
 # =====================================================
