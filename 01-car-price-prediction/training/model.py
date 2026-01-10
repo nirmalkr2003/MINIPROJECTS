@@ -116,7 +116,6 @@ model = RandomForestRegressor(
     n_estimators=300,
     max_depth=15,
     random_state=42,
-    min_samples_split=5,
     n_jobs=-1
 )
 
@@ -139,4 +138,4 @@ print("Model files saved in /model directory")
 
 # print(r2)
 print("RUNNING MODEL.PY")
-# =====================================================
+

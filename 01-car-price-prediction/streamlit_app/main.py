@@ -41,13 +41,13 @@ label {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
 }
 input, select {
-    background-color: rgba(20, 20, 20, 0.85) !important;
+    background-color: rgba(20, 20, 20, 0.8) !important;
     color: #ffffff !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
 }
 div[data-baseweb="select"] > div {
-    background-color: rgba(20, 20, 20, 0.85) !important;
+    background-color: rgba(20, 20, 20, 0.8) !important;
     color: white !important;
 }
 button[kind="primary"] {
@@ -57,7 +57,7 @@ button[kind="primary"] {
     border-radius: 10px !important;
 }
 div[data-testid="stAlert"] {
-    background-color: rgba(0, 0, 0, 0.7) !important;
+    background-color: rgba(0, 0, 0, 0.67) !important;
     color: #00e676 !important;
     font-weight: 700 !important;
     font-size: 18px !important;
