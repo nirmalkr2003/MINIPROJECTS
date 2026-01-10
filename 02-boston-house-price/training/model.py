@@ -42,7 +42,7 @@ X_scaled = scaler.fit_transform(x)
 
 x = pd.DataFrame(X_scaled, columns=x.columns)
 
-with open(os.path.join(MODEL_DIR, 'b_scaling.pkl'), 'wb') as f:
+with open(os.path.join(MODEL_DIR, 'scaling.pkl'), 'wb') as f:
     pickle.dump(scaler, f)
 
 # TRAIN-TEST SPLIT
