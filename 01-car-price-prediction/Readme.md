@@ -61,8 +61,6 @@ Flask project:
 cd flask_app  
 python app.py  
 
-Open in browser:
-http://127.0.0.1:5000
 
 ---
 
@@ -75,5 +73,5 @@ streamlit run main.py
 
 ## Model Details
 - Algorithm: Regression (scikit-learn)
-- Model stored using pickle
+- Model stored using pickle 
 
